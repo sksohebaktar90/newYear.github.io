@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.card {
+  width: 90%;
+  max-width: 420px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2, p {
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ffd700;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.character {
+  font-size: 60px;
+  margin-top: 20px;
+  animation: walk 2s infinite linear;
+}
+
+@keyframes walk {
+  0% { transform: translateX(-80px); }
+  100% { transform: translateX(80px); }
+}
+
+.fade {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- Screen 1 -->
+  <div id="screen1" class="fade">
+    <h1>🎉 Happy New Year 🎉</h1>
+    <h2>2026</h2>
+    <button onclick="openCard()">OPEN</button>
+  </div>
+
+  <!-- Screen 2 -->
+  <div id="screen2" class="hidden fade">
+    <h2>🍀 Good Luck 🍀</h2>
+    <p>May success walk with you all year.</p>
+    <p>Enter your name:</p>
+    <input type="text" id="username" placeholder="Your Name">
+    <br><br>
+    <button onclick="submitName()">Continue</button>
+  </div>
+
+  <!-- Screen 3 -->
+  <div id="screen3" class="hidden fade">
+    <h2 id="welcomeText"></h2>
+    <p>👋 Goodbye 2025</p>
+    <p>🚀 Welcome to 2026</p>
+    <div class="character">🚶‍♂️</div>
+  </div>
+
+</div>
+
+<script>
+function openCard() {
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+}
+
+function submitName() {
+  const name = document.getElementById("username").value.trim();
+  if (name === "") {
+    alert("Enter your name first.");
+    return;
+  }
+
+  document.getElementById("screen2").classList.add("hidden");
+  document.getElementById("screen3").classList.remove("hidden");
+  document.getElementById("welcomeText").innerText =
+    `Welcome ${name}, to 2026 🎉`;
+}
+</script>
+
+</body>
+</html>
